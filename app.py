@@ -21,6 +21,16 @@ class Users(db.Model):
         }
 
 
+@app.route('/', methods=["GET", "POST"])
+def main():
+    if request.method == "GET":
+        print("This was a GET request!")
+        return "You sent a GET request!", 200
+    if request.method == "POST":
+        print("This was a POST request!")
+        return "You sent a POST request!", 200
+
+
 @app.route('/users', methods=['GET'])
 def get_users():
     users = Users.query.all()
